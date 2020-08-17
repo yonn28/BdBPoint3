@@ -1,0 +1,33 @@
+
+<div class="container mt-5" >
+    <div class="row">
+        <div class="col-sm">
+          <form #locationForm="ngForm" (ngSubmit)=addLocation(locationForm) >
+            <div>Location</div>
+            <div class="form-group">
+              <input type="text" name="name" placeholder="enter location name" #name="ngModel" [(ngModel)]= locationService.selectedLocation.name>
+            </div>
+            <div>Area</div>
+            <div class="form-group">
+              <input type="number" name="area_m2" placeholder="enter area" #area_m2="ngModel" [(ngModel)]= locationService.selectedLocation.area_m2> 
+            </div>
+              <input type = "submit" value = "Send">
+          </form>
+        </div>
+        <div class="col-sm">
+            <table class="table">
+              <thead>
+                  <th scope="col">Location</th>
+                  <th scope="col">Area</th>
+              </thead>
+              <tbody>
+                <tr scope="row" *ngFor = "let Location of locationService.locations">
+                  <td>{{Location.name}}</td>
+                  <td>{{Location.area_m2}}</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+</div>
+
