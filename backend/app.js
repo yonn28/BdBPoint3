@@ -1,13 +1,15 @@
 const express = require('express');
 const app = express();
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const cors = require('cors')
 
 const pool = require('./database');
 
 app.use(morgan('dev'));
 app.use(bodyParser.json()); // body en formato json
 app.use(bodyParser.urlencoded({ extended: false })); //body formulario
+app.use(cors({origin:'http://localhost:4200'}));
 
 
 app.get('/', async(req, res)=>{
